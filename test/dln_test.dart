@@ -1,6 +1,6 @@
+import 'package:dln/api/connection.dart';
 import 'package:dln/config/entrypoint.dart';
 import 'package:dln/data/chains.dart';
-import 'package:dln/dln.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,6 +10,7 @@ void main() {
 
   test('get route', () async {
     var connection = Connection(entrypoint: Entrypoint.dln);
+
     var route = await connection.getQuote(
       srcChainId: Chains.solana, 
       srcChainTokenIn: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", 
@@ -24,7 +25,7 @@ void main() {
   test('create tx', () async {
     var connection = Connection(entrypoint: Entrypoint.dln);
 
-    var route = await connection.createTx(
+    var route = await connection.orderCreateTransaction(
       srcChainId: Chains.solana,
       srcChainOrderAuthorityAddress: "4aMdEiKLkXMz1F87Q69axNQdwRCna18MjSjAxGBetsn3",
       srcChainTokenIn: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", 
