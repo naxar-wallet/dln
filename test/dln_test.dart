@@ -15,10 +15,10 @@ void main() {
       srcChainId: Chains.solana, 
       srcChainTokenIn: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", 
       srcChainTokenInAmount: "1000000000000000", 
-      dstChainId: Chains.avalanche, 
+      dstChainId: Chains.ethereum, 
       dstChainTokenOut: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E");
 
-    debugPrint(route.estimation.dstChainTokenOut.amount);
+    debugPrint(route.fixFee);
   });
 
 

@@ -36,10 +36,19 @@ class Connection {
     bool? prependOperatingExpense,
     double? affiliateFeePercent,
   }) async {
-    var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/quote?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&prependOperatingExpenses=${prependOperatingExpense ?? true}&affiliateFeePercent=${affiliateFeePercent ?? 0.1}");
-    var response = await http.get(uri);
-    var jsonDecode = json.decode(response.body);
-    return Route.fromJson(jsonDecode);
+    try {
+      var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/quote?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&prependOperatingExpenses=${prependOperatingExpense ?? true}&affiliateFeePercent=${affiliateFeePercent ?? 0.1}");
+      var response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw response.body;
+      }
+
+      var jsonDecode = json.decode(response.body);
+      return Route.fromJson(jsonDecode);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
   }
 
 
@@ -56,6 +65,7 @@ class Connection {
   /// [dstChainOrderAuthorityAddress] The address (usually, a user wallet's address) on the destination chain who is authorised to patch and cancel the order.
   ///
   /// [affiliateFeeRecipient] The address on the source chain where the accrued affiliate fee would be transferred to after the order is being fulfilled and unlocked
+  
   Future<CreateTx> orderCreateTransaction({
     required int srcChainId,
     required String srcChainOrderAuthorityAddress,
@@ -67,10 +77,19 @@ class Connection {
     required String dstChainTokenOutRecipient,
     double? affiliateFeePercent,
   }) async {
-    var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainTokenOutRecipient&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$srcChainOrderAuthorityAddress");
-    var response = await http.get(uri);
-    var jsonDecode = json.decode(response.body);
-    return CreateTx.fromJson(jsonDecode);
+    try {
+      var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainTokenOutRecipient&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$srcChainOrderAuthorityAddress");
+      var response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw response.body;
+      }
+      
+      var jsonDecode = json.decode(response.body);
+      return CreateTx.fromJson(jsonDecode);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
   }
 
 }
