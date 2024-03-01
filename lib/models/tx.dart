@@ -16,5 +16,5 @@ class Tx {
       to: json['to'], 
       value: json['value']);
 
-    List<int> getVersionedTransactionBytes() => HEX.decode(data.substring(2));
+    List<int> toVersionedTransactionBytes() => HEX.decode(data.substring(2));
 }
