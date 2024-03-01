@@ -34,7 +34,7 @@ class Connection {
     required int dstChainId,
     required String dstChainTokenOut,
     bool? prependOperatingExpense,
-    double? affiliateFeePercent,
+    num? affiliateFeePercent,
   }) async {
     try {
       var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/quote?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&prependOperatingExpenses=${prependOperatingExpense ?? true}&affiliateFeePercent=${affiliateFeePercent ?? 0.1}");
@@ -75,7 +75,7 @@ class Connection {
     required String dstChainTokenOut,
     required String dstChainTokenOutAmount,
     required String dstChainTokenOutRecipient,
-    double? affiliateFeePercent,
+    num? affiliateFeePercent,
   }) async {
     try {
       var uri = Uri.parse("${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainTokenOutRecipient&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$srcChainOrderAuthorityAddress");
@@ -87,6 +87,39 @@ class Connection {
       
       var jsonDecode = json.decode(response.body);
       return CreateTx.fromJson(jsonDecode);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  /// 
+  Future cancelOrder({required String txHash}) async {
+    try {
+      var uri = Uri.parse("https://stats-api.dln.trade/api/Orders/creationTxHash/$txHash");
+      var response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw response.body;
+      }
+      
+      var jsonDecode = json.decode(response.body)['state'];
+      return jsonDecode;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future trakingOrderStatus({required String txHash}) async {
+    try {
+      var uri = Uri.parse("https://stats-api.dln.trade/api/Orders/creationTxHash/$txHash");
+      var response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw response.body;
+      }
+      
+      var jsonDecode = json.decode(response.body)['state'];
+      return jsonDecode;
     } catch (e) {
       throw Exception(e.toString());
     }

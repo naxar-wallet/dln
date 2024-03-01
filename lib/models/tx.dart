@@ -1,3 +1,5 @@
+import 'package:hex/hex.dart';
+
 class Tx {
     final String data;
     String? to;
@@ -13,4 +15,6 @@ class Tx {
       data: json['data'], 
       to: json['to'], 
       value: json['value']);
+
+    List<int> getVersionedTransactionBytes() => HEX.decode(data.substring(2));
 }

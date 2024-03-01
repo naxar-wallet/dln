@@ -8,7 +8,7 @@ class Route {
   final String prependedOperatingExpenseCost;
   final Order order;
   final String fixFee;
-  final double userPoints;
+  final num userPoints;
 
   Route({
     required this.estimation,

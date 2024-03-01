@@ -8,7 +8,7 @@ class CreateTx {
     final Order order;
     final String orderId;
     final String fixFee;
-    final double userPoints;
+    final num userPoints;
 
     CreateTx({
       required this.estimation,
@@ -26,4 +26,5 @@ class CreateTx {
       orderId: json['orderId'], 
       fixFee: json['fixFee'], 
       userPoints: json['userPoints']);
+
 }
