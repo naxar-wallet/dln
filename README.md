@@ -7,13 +7,12 @@ This Dart package enables interoperability with the deSwap Liquidity Network (DL
 
 - Getting a Quote
 - Requesting Order Creation Transaction
-- Submitting an Order Creation Transaction
 - Tracking a Status of the Order
 - Cancelling the Order
 
 
 ## Future
 
-- Transfers transactions to the target blockchain
+- Submitting an Order Creation Transaction
 
 
