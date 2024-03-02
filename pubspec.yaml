@@ -1,7 +1,16 @@
 name: dln
 description: "This package allows you to interact with the deSwap Liquidity Network (DLN)."
+repository: https://github.com/naxar-wallet/dln
+issue_tracker: https://github.com/naxar-wallet/dln/issues/new/choose
 version: 0.0.1
-homepage:
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -16,4 +25,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1

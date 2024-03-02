@@ -37,18 +37,18 @@ void main() {
       dstChainTokenOutRecipient: "0xBDd8e37F4C4c0964C7442c0Ff7b3f73Ce39fAA74");
 
     var tx = route.tx.toVersionedTransactionBytes();
-    print(tx);
+    debugPrint(tx.toString());
     
   });
 
   test("get order status", () async {
     var status = await connection.getOrderStatus(txHash: "2pfKYrJFmnG4mLsq96N6nrqQT8S3ixhb4Yuotaf2KUQU24kPz8HeoHuzMa3R3jeKKHCrux4XYGAnwFGG7wy5FJxx");
-    print(status);
+    debugPrint(status);
   });
 
   test("cancel order", () async {
     var status = await connection.cancelOrder(txHash: "2pfKYrJFmnG4mLsq96N6nrqQT8S3ixhb4Yuotaf2KUQU24kPz8HeoHuzMa3R3jeKKHCrux4XYGAnwFGG7wy5FJxx");
-    print(status);
+    debugPrint(status.data);
   });
 
 }
