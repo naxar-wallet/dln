@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:dln/config/entrypoint.dart';
-import 'package:dln/models/create_tx.dart';
-import 'package:dln/models/route.dart';
-import 'package:dln/models/tx.dart';
+import 'package:dln/api/config/entrypoint.dart';
+import 'package:dln/api/models/create_tx.dart';
+import 'package:dln/api/models/route.dart';
+import 'package:dln/api/models/tx.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -42,7 +42,7 @@ class Connection {
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
-        throw response.body;
+        throw json.decode(response.body);
       }
 
       var jsonDecode = json.decode(response.body);
@@ -86,7 +86,7 @@ class Connection {
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
-        throw response.body;
+        throw json.decode(response.body);
       }
       
       var jsonDecode = json.decode(response.body);
@@ -103,7 +103,7 @@ class Connection {
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
-        throw response.body;
+        throw json.decode(response.body);
       }
       
       var jsonDecode = json.decode(response.body)['tx'];
@@ -119,7 +119,7 @@ class Connection {
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
-        throw response.body;
+        throw json.decode(response.body);
       }
       
       var jsonDecode = json.decode(response.body)['state'];

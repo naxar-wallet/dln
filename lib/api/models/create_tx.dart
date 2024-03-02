@@ -1,6 +1,6 @@
-import 'package:dln/models/estimation.dart';
-import 'package:dln/models/order.dart';
-import 'package:dln/models/tx.dart';
+import 'package:dln/api/models/estimation.dart';
+import 'package:dln/api/models/order.dart';
+import 'package:dln/api/models/tx.dart';
 
 class CreateTx {
     final Estimation estimation;

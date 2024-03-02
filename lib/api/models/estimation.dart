@@ -1,6 +1,6 @@
-import 'package:dln/models/details.dart';
-import 'package:dln/models/token_in.dart';
-import 'package:dln/models/token_out.dart';
+import 'package:dln/api/models/details.dart';
+import 'package:dln/api/models/token_in.dart';
+import 'package:dln/api/models/token_out.dart';
 
 class Estimation {
   final TokenIn srcChainTokenIn;
