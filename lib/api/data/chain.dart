@@ -1,4 +1,4 @@
-class Chains {
+class Chain {
   static const int ethereum = 1;
   static const int optimism = 10;
   static const int bsc = 56;

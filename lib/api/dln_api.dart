@@ -6,8 +6,8 @@ import 'package:dln/api/models/tx.dart';
 import 'package:http/http.dart' as http;
 
 
-class Connection {
-  Connection({required this.entrypoint});
+class DlnApi {
+  DlnApi({required this.entrypoint});
 
   /// Accepts an [Entrypoint] object containing uri.
   final Entrypoint entrypoint;

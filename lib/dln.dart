@@ -1,4 +1,4 @@
 library dln;
 
-export 'api/connection.dart';
+export 'api/dln_api.dart';
 export 'api/config/entrypoint.dart';
