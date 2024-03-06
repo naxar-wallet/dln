@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Changed chains data
+
 ## 0.0.3
 
 - Corrected README.md
