@@ -44,15 +44,15 @@ class Chains {
       logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/23015.png");
 
   static List<Chain> toList() => [
-    ethereum,
-    optimism,
-    bsc,
-    polygon,
-    base,
-    arbitrum,
-    avalanche,
-    linea,
-    solana,
-    neon
-  ];
+        ethereum,
+        optimism,
+        bsc,
+        polygon,
+        base,
+        arbitrum,
+        avalanche,
+        linea,
+        solana,
+        neon
+      ];
 }
