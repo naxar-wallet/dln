@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Added developer referral if user has not specified any
+
 ## 0.0.4
 
 - Changed chains data
