@@ -79,10 +79,11 @@ class DlnApi {
     required String dstChainTokenOutRecipient,
     required String dstChainOrderAuthorityAddress,
     num? affiliateFeePercent,
+    String? affiliateFeeRecipient,
   }) async {
     try {
       var uri = Uri.parse(
-          "${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainOrderAuthorityAddress&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$srcChainOrderAuthorityAddress");
+          "${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainOrderAuthorityAddress&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=${affiliateFeeRecipient ?? "0x496163cA5cC1798C5c855406C7248Aa1A7e5Fa83"}");
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
