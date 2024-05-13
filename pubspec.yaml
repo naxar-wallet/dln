@@ -2,7 +2,7 @@ name: dln
 description: "This package allows you to interact with the deSwap Liquidity Network (DLN)."
 repository: https://github.com/naxar-wallet/dln
 issue_tracker: https://github.com/naxar-wallet/dln/issues/new/choose
-version: 0.0.5
+version: 0.0.6
 
 platforms:
   android:

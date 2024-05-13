@@ -3,6 +3,7 @@ import 'package:dln/api/config/entrypoint.dart';
 import 'package:dln/api/models/create_tx.dart';
 import 'package:dln/api/models/route.dart';
 import 'package:dln/api/models/tx.dart';
+import 'package:dln/dln.dart';
 import 'package:http/http.dart' as http;
 
 class DlnApi {
@@ -82,8 +83,20 @@ class DlnApi {
     String? affiliateFeeRecipient,
   }) async {
     try {
+      if (affiliateFeePercent == null
+      && srcChainId == Chains.arbitrum.id
+      && srcChainId == Chains.ethereum.id
+      && srcChainId == Chains.avalanche.id
+      && srcChainId == Chains.polygon.id
+      && srcChainId == Chains.optimism.id
+      && srcChainId == Chains.bsc.id
+      && srcChainId == Chains.base.id
+      && srcChainId == Chains.linea.id
+      && srcChainId == Chains.neon.id) {
+        affiliateFeeRecipient = "0x496163cA5cC1798C5c855406C7248Aa1A7e5Fa83";
+      }
       var uri = Uri.parse(
-          "${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainOrderAuthorityAddress&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=${affiliateFeeRecipient ?? "0x496163cA5cC1798C5c855406C7248Aa1A7e5Fa83"}");
+          "${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainOrderAuthorityAddress&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$affiliateFeeRecipient");
       var response = await http.get(uri);
 
       if (response.statusCode != 200) {
