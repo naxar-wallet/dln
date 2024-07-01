@@ -1,3 +1,11 @@
+## 0.0.8
+
+- Added Gnosis, LightLink, Metis
+
+## 0.0.7
+
+- Fix referral error
+
 ## 0.0.6
 
 - Fix referral error

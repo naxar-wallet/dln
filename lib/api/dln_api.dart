@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:dln/api/config/entrypoint.dart';
 import 'package:dln/api/models/create_tx.dart';
 import 'package:dln/api/models/route.dart';
 import 'package:dln/api/models/tx.dart';
@@ -83,7 +82,7 @@ class DlnApi {
     String? affiliateFeeRecipient,
   }) async {
     try {
-      if (affiliateFeePercent == null
+      if (affiliateFeeRecipient == null
       && srcChainId == Chains.arbitrum.id
       && srcChainId == Chains.ethereum.id
       && srcChainId == Chains.avalanche.id
@@ -94,7 +93,10 @@ class DlnApi {
       && srcChainId == Chains.linea.id
       && srcChainId == Chains.neon.id) {
         affiliateFeeRecipient = "0x496163cA5cC1798C5c855406C7248Aa1A7e5Fa83";
+      } else if (affiliateFeeRecipient == null && srcChainId == Chains.solana.id) {
+        affiliateFeeRecipient = "4aMdEiKLkXMz1F87Q69axNQdwRCna18MjSjAxGBetsn3";
       }
+
       var uri = Uri.parse(
           "${entrypoint.uri}/v1.0/dln/order/create-tx?srcChainId=$srcChainId&srcChainTokenIn=$srcChainTokenIn&srcChainTokenInAmount=$srcChainTokenInAmount&dstChainId=$dstChainId&dstChainTokenOut=$dstChainTokenOut&dstChainTokenOutAmount=$dstChainTokenOutAmount&dstChainTokenOutRecipient=$dstChainTokenOutRecipient&srcChainOrderAuthorityAddress=$srcChainOrderAuthorityAddress&dstChainOrderAuthorityAddress=$dstChainOrderAuthorityAddress&affiliateFeePercent=${affiliateFeePercent ?? 0.1}&affiliateFeeRecipient=$affiliateFeeRecipient");
       var response = await http.get(uri);

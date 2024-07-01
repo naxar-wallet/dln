@@ -1,8 +1,8 @@
 class RouteTx {
-  final String allowanceTarget;
-  final String allowanceValue;
+  final String? allowanceTarget;
+  final String? allowanceValue;
 
-  RouteTx({required this.allowanceTarget, required this.allowanceValue});
+  RouteTx({this.allowanceTarget, this.allowanceValue});
 
   factory RouteTx.fromJson(Map<String, dynamic> json) => RouteTx(
       allowanceTarget: json['allowanceTarget'],

@@ -42,6 +42,18 @@ class Chains {
       id: 100000001,
       name: "Neon",
       logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/23015.png");
+  static Chain gnosis = Chain(
+      id: 100000002,
+      name: "Gnosis",
+      logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/1659.png");
+  static Chain lightLink = Chain(
+      id: 100000003,
+      name: "LightLink",
+      logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/22943.png");
+  static Chain metis = Chain(
+      id: 100000004,
+      name: "Metis",
+      logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/9640.png");
 
   static List<Chain> toList() => [
         ethereum,
@@ -53,6 +65,9 @@ class Chains {
         avalanche,
         linea,
         solana,
-        neon
+        neon,
+        gnosis,
+        lightLink,
+        metis
       ];
 }
